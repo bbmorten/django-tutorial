@@ -80,3 +80,42 @@ c = q.choice_set.filter(choice_text__startswith='Just hacking')
 
 python manage.py createsuperuser
 
+
+Running Tests
+
+python manage.py test polls
+
+
+The Django test client¶
+
+Django provides a test Client to simulate a user interacting with the code at the view level. We can use it in tests.py or even in the shell.
+
+from django.test.utils import setup_test_environment
+setup_test_environment()
+from django.test import Client
+# create an instance of the client for our use
+client = Client()
+# get a response from '/'
+response = client.get('/')
+# we should expect a 404 from that address; if you instead see an
+# "Invalid HTTP_HOST header" error and a 400 response, you probably
+# omitted the setup_test_environment() call described earlier.
+response.status_code
+# on the other hand we should expect to find something at '/polls/'
+# we'll use 'reverse()' rather than a hardcoded URL
+from django.urls import reverse
+response = client.get(reverse('polls:index'))
+response.status_code
+response.content
+response.context['latest_question_list']
+
+
+
+
+https://www.selenium.dev/
+
+https://en.wikipedia.org/wiki/Continuous_integration
+
+https://docs.djangoproject.com/en/3.2/topics/testing/advanced/#topics-testing-code-coverage
+
+https://docs.djangoproject.com/en/3.2/topics/testing/
