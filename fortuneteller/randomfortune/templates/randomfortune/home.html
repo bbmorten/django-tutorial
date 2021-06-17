@@ -1,0 +1,35 @@
+{% extends "randomfortune/base.html" %}
+
+
+
+{% block content2 %}
+<p>Welcome!</p>
+{% endblock %}
+
+{% block content %}
+<p>This will go inside the body</p>
+
+{% if pet.animal_type == "Dog" %}
+<p>The animal is a dog</p>
+{% elif pet.animal_type == "Cat" %}
+<p>The animal is a cat</p>
+{%else %}
+<p>The animal is not a dog or cat</p>
+
+
+
+{% endif %}
+
+<p>Welcome, {{ name }}!</p>
+
+<p>Here is the current list of patients:</p>
+{% for pet in pets %}
+<p> {{ pet.petname }} : {{pet.animal_type | upper}} </p>
+{% endfor %}
+
+{% for key in pets|dictsort:"petname" %}
+<p>pet name : {{ key.petname | lower }}</p>
+{% endfor %}
+
+<p>This will also be inside the body</p>
+{% endblock %}

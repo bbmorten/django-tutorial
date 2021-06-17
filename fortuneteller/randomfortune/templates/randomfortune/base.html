@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to your fortune</title>
+    {% load static %}
+    {% block head %}
+    <link rel="stylesheet" href="{% static 'randomfortune/basic.css' %}">
+    {% endblock %}
+</head>
+
+<body>
+    <div class="topnav" id="pageTopNav">
+        <a href="#home" class="active">Home</a>
+        <a href="#contact">Contact</a>
+    </div>
+
+    {% block content2 %}
+    {% endblock %}
+
+    {% block content %}
+    {% endblock %}
+
+    <a href="{% url 'randomfortune:home' %}">Vet Office</a>
+
+
+</body>
+
+</html>
